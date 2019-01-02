@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<style>
+
+.item{
+  transition: -webkit-transform 0.6s ease
+}
+.item:nth-child(n+2){
+    display: none;
+}
+.t{
+  transform: translate(-1000px,0px);
+}
+.t1{
+  transform: translate(1000px,0px);
+}
+</style>
+<script
+src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+
+crossorigin="anonymous"></script>
+<script >
+$(document).ready(function(){
+$('.next').click(function(){
+var next = $('.active').next();
+$('.active').addClass('t');
+setTimeout(function(){
+ $('.active').hide();
+$('.active').removeClass('active');
+next.removeClass('t1');
+next.addClass('active').css('display','block');
+},300)
+
+
+});
+$('.prev').click(function(){
+  var prev = $('.active').prev();
+  $('.active').addClass('t1');
+//prev.removeClass('t');
+setTimeout(function(){
+ $('.active').hide();
+$('.active').removeClass('active');
+prev.removeClass('t');
+prev.addClass('active').css('display','block');
+},300)
+});
+
+});
+
+</script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1 d-flex">
+      <button class="prev justify-content-center align-self-center">prev</button>
+    </div>
+    <div class="col-sm-10 ">
+    
+      <img class="w-100 item active" src="./images/thumbnails/1.jpg"/> 
+     <img class="h-100 mx-auto  item" src="./images/thumbnails/5.jpg"/>
+     <img class="w-100 item " src="./images/thumbnails/2.jpg"/>  
+    </div>
+    <div class="col-sm-1 d-flex">
+      <button class="next justify-content-center align-self-center" >next</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
